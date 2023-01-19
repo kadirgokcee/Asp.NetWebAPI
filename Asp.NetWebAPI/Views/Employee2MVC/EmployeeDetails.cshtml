@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "EmployeeDetails";
+}
+
+<h2>EmployeeDetails</h2>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<input type="button" id="allEmploye" value="Employee List" />
+
+<div id="employees"></div>
+
+<script>
+    $(document).ready(function()
+    {
+        $("#allEmploye").click(function () {
+            $.getJSON('../api/employee').done(function (veri) {
+                var employees = "";
+                $.each(veri, function (key, employee) {
+                    employees += employee.Name + " " + employee.LastName + "<br/>";
+                });
+                $("#employees").html(employees);
+            })
+        });
+    })
+
+
+
+
+</script>
